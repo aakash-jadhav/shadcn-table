@@ -13,6 +13,8 @@ import {
 } from "./components/ui/dropdown-menu"
 import { Button } from "./components/ui/button"
 import { FiMoreVertical } from "react-icons/fi"
+import { Input } from "./components/ui/input"
+import { useEffect, useState } from "react"
 
 const columnHelper = createColumnHelper<User>()
 const columns = [
@@ -40,23 +42,130 @@ const columns = [
   }),
   columnHelper.accessor("firstName", {
     header: info => <DefaultHeader info={info} name="First Name" />,
-    cell: info => info.getValue(),
+    // cell: info => (
+    //   <Input
+    //     value={info.row.original.firstName}
+    //     onChange={e =>
+    //       info.table.options.meta?.updateData(
+    //         info.row.index,
+    //         "firstName",
+    //         e.target.value
+    //       )
+    //     }
+    //   />
+    // ),
+    cell: info => {
+      const initialValue = info.getValue()
+      const [value, setValue] = useState(initialValue)
+      useEffect(() => {
+        setValue(initialValue)
+      }, [initialValue])
+      return (
+        <Input
+          value={value}
+          onChange={e => setValue(e.target.value)}
+          onBlur={() =>
+            info.table.options.meta?.updateData?.(
+              info.row.index,
+              info.column.id,
+              value
+            )
+          }
+        />
+      )
+    },
   }),
   columnHelper.accessor("lastName", {
     header: info => <DefaultHeader info={info} name="Last Name" />,
-    cell: info => info.getValue(),
+    cell: info => {
+      const initialValue = info.getValue()
+      const [value, setValue] = useState(initialValue)
+      useEffect(() => {
+        setValue(initialValue)
+      }, [initialValue])
+      return (
+        <Input
+          value={value}
+          onChange={e => setValue(e.target.value)}
+          onBlur={() =>
+            info.table.options.meta?.updateData?.(
+              info.row.index,
+              info.column.id,
+              value
+            )
+          }
+        />
+      )
+    },
   }),
   columnHelper.accessor("email", {
     header: info => <DefaultHeader info={info} name="Email" />,
-    cell: info => info.getValue(),
+    cell: info => {
+      const initialValue = info.getValue()
+      const [value, setValue] = useState(initialValue)
+      useEffect(() => {
+        setValue(initialValue)
+      }, [initialValue])
+      return (
+        <Input
+          value={value}
+          onChange={e => setValue(e.target.value)}
+          onBlur={() =>
+            info.table.options.meta?.updateData?.(
+              info.row.index,
+              info.column.id,
+              value
+            )
+          }
+        />
+      )
+    },
   }),
   columnHelper.accessor("age", {
     header: info => <DefaultHeader info={info} name="Age" />,
-    cell: info => info.getValue(),
+    cell: info => {
+      const initialValue = info.getValue()
+      const [value, setValue] = useState(initialValue)
+      useEffect(() => {
+        setValue(initialValue)
+      }, [initialValue])
+      return (
+        <Input
+          value={value}
+          onChange={e => setValue(e.target.value)}
+          onBlur={() =>
+            info.table.options.meta?.updateData?.(
+              info.row.index,
+              info.column.id,
+              value
+            )
+          }
+        />
+      )
+    },
   }),
   columnHelper.accessor("comments", {
     header: info => <DefaultHeader info={info} name="Comments" />,
-    cell: info => info.getValue(),
+    cell: info => {
+      const initialValue = info.getValue()
+      const [value, setValue] = useState(initialValue)
+      useEffect(() => {
+        setValue(initialValue)
+      }, [initialValue])
+      return (
+        <Input
+          value={value}
+          onChange={e => setValue(e.target.value)}
+          onBlur={() =>
+            info.table.options.meta?.updateData?.(
+              info.row.index,
+              info.column.id,
+              value
+            )
+          }
+        />
+      )
+    },
   }),
 
   columnHelper.display({

@@ -44,6 +44,18 @@ export function DataTable<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    meta: {
+      updateData: (rowIndex: number, columnId: string, value: string) => {
+        setTableData(prev => {
+          const updated = [...prev]
+          updated[rowIndex] = {
+            ...updated[rowIndex],
+            [columnId]: value,
+          }
+          return updated
+        })
+      },
+    },
   })
 
   return (
@@ -148,6 +160,14 @@ export function DataTable<TData, TValue>({
               )}
             </TableBody>
           </Table>
+        </div>
+        <div className="flex justify-end mt-4">
+          <Button
+            variant="default"
+            onClick={() => console.log("Saved data:", tableData)}
+          >
+            Save
+          </Button>
         </div>
         <div className="text-sm text-gray-400 ">
           {table.getSelectedRowModel().rows.length} of{" "}
