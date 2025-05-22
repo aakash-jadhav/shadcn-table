@@ -32,7 +32,7 @@ export function DataTable<TData, TValue>({
   const filteredData = useMemo(() => {
     if (!searchQuery) return tableData
     return tableData.filter(row =>
-      Object.values(row).some(
+      Object.values(row as Record<string, unknown>).some(
         value =>
           typeof value === "string" &&
           value.toLowerCase().includes(searchQuery.toLowerCase())
