@@ -58,6 +58,7 @@ const columns = [
     header: info => <DefaultHeader info={info} name="Comments" />,
     cell: info => info.getValue(),
   }),
+
   columnHelper.display({
     id: "more",
     cell: ({ row }) => {
