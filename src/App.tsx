@@ -65,7 +65,7 @@ const columns = [
           value={value}
           onChange={e => setValue(e.target.value)}
           onBlur={() =>
-            info.table.options.meta?.updateData?.(
+            (info.table.options.meta as any)?.updateData?.(
               info.row.index,
               info.column.id,
               value
@@ -88,7 +88,7 @@ const columns = [
           value={value}
           onChange={e => setValue(e.target.value)}
           onBlur={() =>
-            info.table.options.meta?.updateData?.(
+            (info.table.options.meta as any)?.updateData?.(
               info.row.index,
               info.column.id,
               value
@@ -111,7 +111,7 @@ const columns = [
           value={value}
           onChange={e => setValue(e.target.value)}
           onBlur={() =>
-            info.table.options.meta?.updateData?.(
+            (info.table.options.meta as any)?.updateData?.(
               info.row.index,
               info.column.id,
               value
@@ -132,9 +132,9 @@ const columns = [
       return (
         <Input
           value={value}
-          onChange={e => setValue(e.target.value)}
+          onChange={e => setValue(Number(e.target.value))}
           onBlur={() =>
-            info.table.options.meta?.updateData?.(
+            (info.table.options.meta as any)?.updateData?.(
               info.row.index,
               info.column.id,
               value
@@ -157,7 +157,7 @@ const columns = [
           value={value}
           onChange={e => setValue(e.target.value)}
           onBlur={() =>
-            info.table.options.meta?.updateData?.(
+            (info.table.options.meta as any)?.updateData?.(
               info.row.index,
               info.column.id,
               value
@@ -171,6 +171,7 @@ const columns = [
   columnHelper.display({
     id: "more",
     cell: ({ row }) => {
+      console.log(row)
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
